@@ -8,10 +8,17 @@ from hashtables import (HashTable,
 
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
+    first_index = None
+    second_index = None
 
-    """
-    YOUR CODE HERE
-    """
+    for i in range(len(weights)):
+        hash_table_insert(ht, weights[i], i)
+
+    for i in range(len(weights)):
+        second_index = i
+        first_index = hash_table_retrieve(ht, limit - weights[i])
+        if first_index is not None:
+            return (first_index, second_index)
 
     return None
 
